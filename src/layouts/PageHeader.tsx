@@ -1,5 +1,5 @@
 import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
-import Logo from "../assets/Logo (1).png";
+import Sen1 from "../assets/sen1.png"
 import { Button } from "../components/Button";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ export function PageHeader() {
           <Menu />
         </Button>
         <a href="/">
-          <img src={Logo} alt="youtube ko jastai logo" className="h-6" />
+          <img src={Sen1} alt="youtube ko jastai logo" className="h-6" />
         </a>
       </div>
 
