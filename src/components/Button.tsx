@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 //This takes two parameters:
 // first one being the array of classes that you apply to every single button you create
 //second one being an object that takes  variants property and its keys
-const buttonStyles = cva(["transition-colors"], {
+export const buttonStyles = cva(["transition-colors"], {
   variants: {
     variant: {
       default: ["bg-secondary", "hover:bg-secondary-hover"],
