@@ -1,5 +1,5 @@
 import { Clapperboard, Home, Icon, Library, Repeat } from "lucide-react";
-import { ElementType } from "react";
+import { Children, ElementType, ReactNode } from "react";
 import { buttonStyles } from "../components/Button";
 import { twMerge } from "tailwind-merge";
 
@@ -22,7 +22,7 @@ export function Sidebar() {
       {/* For Larger Screens */}
 
       <aside className="w-56 lg:sticky absolute top-0  overflow-y-auto scrollbar-hidden pb-4 flex flex-col gap-2 px-2 ">
-        <LargeSidebarSection>
+        <LargeSidebarSection title="Hi">
           <LargeSidebarItem isActive Icon={Home} title="Home" url="/" />
         </LargeSidebarSection>
       </aside>
@@ -51,7 +51,26 @@ function SmallSidebarItem({ Icon, title, url }: SmallSidebarItemProps) {
   );
 }
 
-function LargeSidebarSection({}: LargeSidebarSectionProps) {}
+type LargeSidebarSectionProps = {
+  children: ReactNode;
+  title?: string;
+  visibleItemCount?: number;
+};
+
+function LargeSidebarSection({
+  children,
+  title,
+  visibleItemCount = Number.POSITIVE_INFINITY,
+}) {
+  const childrenArray = Children.toArray(children).flat();
+  const visibleChildren = childrenArray.slice(0, visibleItemCount);
+  return (
+    <div>
+      {title && <div className="ml-4 mt-2 text-lg mb-1">{title}</div>}
+      {visibleChildren}
+    </div>
+  );
+}
 
 type LargeSidebarItemProps = {
   Icon: ElementType;
@@ -60,6 +79,7 @@ type LargeSidebarItemProps = {
   isActive?: boolean;
 };
 function LargeSidebarItem({
+  Icon,
   title,
   url,
   isActive = false,
