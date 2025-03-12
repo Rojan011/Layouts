@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-secondary: #e5e7eb; /* colors.neutral[200] */
@@ -7,4 +7,24 @@
   --color-secondary-text: #6b7280; /* colors.neutral[500] */
   --color-secondary-dark: #26272b; /* colors.neutral[800] */
   --color-secondary-dark-hover: #17191c; /* colors.neutral[900] */
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  @apply bg-transparent w-2;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-secondary-dark rounded-full;
+}
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+  @apply bg-transparent;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
+  @apply bg-secondary-border;
 }
